@@ -2,7 +2,6 @@ from Mapa_nodo import Mapa_nodo
 from Mapa import Mapa
 
 
-
 class Mapa_Matriz():
   __raiz = None # Mapa_nodo()
   __finCabeceraHor = None # Mapa_nodo()

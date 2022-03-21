@@ -1,7 +1,6 @@
 from Mapa import Mapa
 
 
-
 class Mapa_nodo():
   __mapa = Mapa()
   __derecha = None # MapaNodo()
@@ -41,8 +40,7 @@ class Mapa_nodo():
   
   def set_abajo(self, abajo):
     self.__abajo = abajo
-  
-  
+    
   
   def imprimir(self):
     celda = self.__mapa.imprimir()

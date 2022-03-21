@@ -1,6 +1,5 @@
 
 
-
 class Mapa():
   __estado = ""
   __posicion_X = 0
@@ -26,7 +25,6 @@ class Mapa():
     self.__posicion_Y = posicion_Y
   
   
-  
   def imprimirCabecera(self):
     cabecera = str(self.__posicion_X).center(2," ")
     return cabecera
@@ -36,7 +34,6 @@ class Mapa():
     fila = ""
     if (self.__estado == " "):
       pass
-  
   
   
   def imprimir(self):
