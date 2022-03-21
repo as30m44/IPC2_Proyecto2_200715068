@@ -44,6 +44,6 @@ class Mapa_nodo():
   
   
   
-  def imprimirPrueba(self):
-    celda = self.__mapa.imprimirPrueba()
+  def imprimir(self):
+    celda = self.__mapa.imprimir()
     return celda

@@ -39,5 +39,5 @@ class Mapa():
   
   
   
-  def imprimirPrueba(self):
+  def imprimir(self):
     return self.__estado
