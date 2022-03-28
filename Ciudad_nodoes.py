@@ -10,3 +10,12 @@ class Ciudad_nodoES(NodoEnlazadoSimple):
   
   def set_ciudad(self, ciudad):
     self.__ciudad = ciudad
+
+
+  def imprimir(self, tipo):
+    # muestra el título de la tabla
+    if (tipo == "titulo"):
+      self.__ciudad.imprimirTitulo()
+    # muestra la celda de la tabla
+    else: 
+      self.__ciudad.imprimirCelda()

@@ -2,7 +2,7 @@
 <configuracion>
     <listaCiudades>
         <ciudad>
-            <nombre filas="15" columnas="20">CiudadGotica</nombre>
+            <nombre filas="15" columnas="20">metropolis</nombre>
             <fila numero="1">"********************"</fila>
             <fila numero="2">"*** **             *"</fila>
             <fila numero="3">"*** *****E*****C****"</fila>
@@ -27,7 +27,7 @@
             <unidadMilitar fila="14" columna="10">20</unidadMilitar>
         </ciudad>
         <ciudad>
-            <nombre filas="10" columnas="10">CiudadGuate</nombre>
+            <nombre filas="10" columnas="10">CiudadGotica</nombre>
             <fila numero="1">"**********"</fila>
             <fila numero="2">"***   C  R"</fila>
             <fila numero="3">"*** ******"</fila>

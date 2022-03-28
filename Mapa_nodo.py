@@ -42,6 +42,8 @@ class Mapa_nodo():
     self.__abajo = abajo
     
   
-  def imprimir(self):
-    celda = self.__mapa.imprimir()
+  def imprimir(self, tipo):
+    celda = ""
+    if (tipo == "celda"):
+      celda = self.__mapa.imprimirCelda()
     return celda

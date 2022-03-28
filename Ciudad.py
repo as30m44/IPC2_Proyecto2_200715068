@@ -1,35 +1,49 @@
 class Ciudad():
-  __id = 0
+  __idCiudad = 0
   __nombre = ""
-  __noColumnasMapa = 0
-  __noFilasMapa = 0
+  __noColumnas = 0
+  __noFilas = 0
+  __listaFilas = None 
+  __listaUnidadesMilitares = None 
   
   def __init__(self):
     pass
   
-  def get_id(self):
-    return self.__id
+  def get_idCiudad(self):
+    return self.__idCiudad
   
   def get_nombre(self):
     return self.__nombre
   
-  def get_noColumnasMapa(self):
-    return self.__noColumnasMapa
+  def get_noColumnas(self):
+    return self.__noColumnas
   
-  def get_noFilasMapa(self):
-    return self.__noFilasMapa
+  def get_noFilas(self):
+    return self.__noFilas
   
-  def set_id(self, id):
-    self.__id = id
+  def get_listaFilas(self):
+    return self.__listaFilas
+  
+  def get_listaUnidadesMilitares(self):
+    return self.__listaUnidadesMilitares
+  
+  def set_idCiudad(self, id):
+    self.__idCiudad = id
   
   def set_nombre(self, nombre):
     self.__nombre = nombre
   
-  def set_noColumnasMapa(self, noColumnasMapa):
-    self.__noColumnasMapa = noColumnasMapa
+  def set_noColumnas(self, noColumnas):
+    self.__noColumnas = noColumnas
   
-  def set_noFilasMapa(self, noFilasMapa):
-    self.__noFilasMapa = noFilasMapa
+  def set_noFilas(self, noFilas):
+    self.__noFilas = noFilas
+  
+  def set_listaFilas(self, listaFilas):
+    self.__listaFilas = listaFilas
+  
+  def set_listaUnidadesMilitares(self, listaUnidadesMilitares):
+    self.__listaUnidadesMilitares = listaUnidadesMilitares
   
   
   def imprimirTitulo(self):
@@ -43,11 +57,11 @@ class Ciudad():
     print(borde)
   
   
-  def imprimir(self):
-    id = "|" + str(self.__id).center(8, " ") + "|"
+  def imprimirCelda(self):
+    id = "|" + str(self.__idCiudad).center(8, " ") + "|"
     nombre = self.__nombre.center(15, " ") + "|"
-    columnas = str(self.__noColumnasMapa).center(8, " ") + "|"
-    filas = str(self.__noFilasMapa).center(8, " ") + "|"
+    columnas = str(self.__noColumnas).center(8, " ") + "|"
+    filas = str(self.__noFilas).center(8, " ") + "|"
     borde = "-".ljust(36, "-")
     print(id, nombre, columnas, filas)
     print(borde)
