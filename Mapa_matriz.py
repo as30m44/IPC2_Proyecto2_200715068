@@ -2,7 +2,7 @@ from Mapa_nodo import Mapa_nodo
 from Mapa import Mapa
 
 
-class Mapa_Matriz():
+class Mapa_matriz():
   __raiz = None # Mapa_nodo()
   __finCabeceraHor = None # Mapa_nodo()
   __finCabeceraVer = None # Mapa_nodo()
@@ -100,113 +100,6 @@ class Mapa_Matriz():
     else:
       self.__insertarAux(mapa)
 
-  
-  def __insertarAuxA(self, mapa):
-    nodoNuevo = Mapa_nodo()
-    nodoPos_i = mapa.get_posicion_X()
-    nodoPos_j = mapa.get_posicion_Y()
-    nodoNuevo.set_mapa(mapa)
-    nodoTemp_i = None
-    nodoTemp_ii = None
-    nodoTemp_j = None
-    nodoTemp_jj = None
-    # ubicar al nodo actual en la raiz
-    self.__nodoActual = self.__raiz
-    # **********************************************************************************************
-    # caso 1: para nodos en la última columna
-    if (nodoPos_i == self.__noColumnas):
-      # ............................................................................................
-      # caso 1.1: ENLACES de nodo en la esquina inferior derecha, solo columna
-      if (nodoPos_j == self.__noFilas):
-        # mover el nodo temporal a la última cabecera horizontal
-        nodoTemp_j = self.__ubicarNodoAux(self.__nodoActual, nodoPos_i, "horizontal")
-        # baja y busca el último nodo de la columna
-        while (nodoTemp_j.get_abajo() != None):
-          nodoTemp_j = nodoTemp_j.get_abajo()
-        # conecta los nodos
-        nodoTemp_j.set_abajo(nodoNuevo)
-        nodoNuevo.set_arriba(nodoTemp_j)
-      # ............................................................................................
-      # caso 1.2: ENLACES de nodo en la última columna entre dos nodos, solo columna
-      else:
-        # mover el nodo temporal 2 a la última cabecera horizontal
-        nodoTemp_jj = self.__ubicarNodoAux(self.__nodoActual, nodoPos_i, "horizontal")
-        # busca el nodo con primer id mayor a m de la columna
-        while (nodoPos_j < nodoTemp_jj.get_mapa().get_posicion_Y):
-          nodoTemp_jj = nodoTemp_jj.get_abajo()
-        # selecciona el nodo con el último id menor a m de la columna
-        nodoTemp_j = nodoTemp_jj.get_arriba()
-        # conecta los nodos
-        nodoTemp_j.set_abajo(nodoNuevo)
-        nodoNuevo.set_arriba(nodoTemp_j)
-        nodoNuevo.set_abajo(nodoTemp_jj)
-        nodoTemp_jj.set_arriba(nodoNuevo)
-      # ............................................................................................
-      # ENLACES de nodo, para ambos casos, solo fila
-      # mover el nodo temporal a la cabecera m vertical
-      nodoTemp_i = self.__ubicarNodoAux(self.__nodoActual, nodoPos_j, "vertical")
-      # se mueve a la derecha y busca el último nodo de la fila
-      while (nodoTemp_i.get_derecha() != None):
-        nodoTemp_i = nodoTemp_i.get_derecha()
-      # conecta los nodos
-      nodoTemp_i.set_derecha(nodoNuevo)
-      nodoNuevo.set_izquierda(nodoTemp_i)
-    # **********************************************************************************************
-    # caso 2: para nodos antes de la última columna
-    else:
-      # ............................................................................................
-      # caso 2.1: ENLACES de nodo en la última fila entre dos nodos, solo fila
-      if (nodoPos_j == self.__noFilas):
-        # mover el nodo temporal 2 a la última cabecera vertical
-        nodoTemp_ii = self.__ubicarNodoAux(self.__nodoActual, nodoPos_j, "vertical")
-        # busca el nodo con primer id mayor a m de la fila
-        while (nodoPos_i < nodoTemp_ii.get_mapa().get_posicion_X):
-          nodoTemp_ii = nodoTemp_ii.get_derecha()
-        # selecciona el nodo con el último id menor a m de la fila
-        nodoTemp_i = nodoTemp_ii.get_izquierda()
-        # conecta los nodos
-        nodoTemp_i.set_derecha(nodoNuevo)
-        nodoNuevo.set_izquierda(nodoTemp_i)
-        nodoNuevo.set_derecha(nodoTemp_ii)
-        nodoTemp_ii.set_izquierda(nodoNuevo)
-        # ENLACES de nodo, solo columna
-        # mover el nodo temporal a la cabecera m horizontal
-        nodoTemp_j = self.__ubicarNodoAux(self.__nodoActual, nodoPos_i, "horizontal")
-        # se mueve a la derecha y busca el último nodo de la fila
-        while (nodoTemp_j.get_abajo() != None):
-          nodoTemp_j = nodoTemp_j.get_abajo()
-        # conecta los nodos
-        nodoTemp_j.set_derecha(nodoNuevo)
-        nodoNuevo.set_izquierda(nodoTemp_j)
-      # ............................................................................................
-      # caso 2.2: ENLACES de nodo en el centro de la matriz
-      else:
-        # mover el nodo temporal 2 a la cabecera m horizontal
-        nodoTemp_jj = self.__ubicarNodoAux(self.__nodoActual, nodoPos_i, "horizontal")
-        # busca el nodo con primer id mayor a m de la columna
-        while (nodoPos_j < nodoTemp_jj.get_mapa().get_posicion_Y()):
-          nodoTemp_jj = nodoTemp_jj.get_abajo()
-        # selecciona el nodo con el último id menor a m de la columna
-        nodoTemp_j = nodoTemp_jj.get_arriba()
-        # conecta los nodos
-        nodoTemp_j.set_abajo(nodoNuevo)
-        nodoNuevo.set_arriba(nodoTemp_j)
-        nodoNuevo.set_abajo(nodoTemp_jj)
-        nodoTemp_jj.set_arriba(nodoNuevo)
-      # ............................................................................................
-        # mover el nodo temporal 2 a la cabecera m vertical
-        nodoTemp_ii = self.__ubicarNodoAux(self.__nodoActual, nodoPos_j, "vertical")
-        # busca el nodo con primer id mayor a m de la fila
-        while (nodoPos_i < nodoTemp_ii.get_mapa().get_posicion_X):
-          nodoTemp_ii = nodoTemp_ii.get_derecha()
-        # selecciona el nodo con el último id menor a m de la fila
-        nodoTemp_i = nodoTemp_ii.get_izquierda()
-        # conecta los nodos
-        nodoTemp_i.set_derecha(nodoNuevo)
-        nodoNuevo.set_izquierda(nodoTemp_i)
-        nodoNuevo.set_derecha(nodoTemp_ii)
-        nodoTemp_ii.set_izquierda(nodoNuevo)
-  
 
   def __insertarAux(self, mapa):
     nodoNuevo = Mapa_nodo()
@@ -270,7 +163,8 @@ class Mapa_Matriz():
         nodoNuevo.set_izquierda(nodoHor)
         nodoHorMax.set_izquierda(nodoNuevo)
         nodoNuevo.set_derecha(nodoHorMax)
-    
+
+  
   def imprimir(self):
     if (self.estaVacio()):
       print("MAPA: la matriz está vacía")

@@ -27,8 +27,8 @@ class Ciudad():
   def get_listaUnidadesMilitares(self):
     return self.__listaUnidadesMilitares
   
-  def set_idCiudad(self, id):
-    self.__idCiudad = id
+  def set_idCiudad(self, idCiudad):
+    self.__idCiudad = idCiudad
   
   def set_nombre(self, nombre):
     self.__nombre = nombre
