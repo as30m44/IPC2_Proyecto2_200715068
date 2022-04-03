@@ -1,6 +1,6 @@
 graph Matriz {
 	rankdir=TB
-	nodo1 [label=1 shape=box]
+	nodo1 [label=1 fontname=consolas fontsize=5 shape=box]
 	nodo2 [label=2]
 	nodo3 [label=3]
 	nodo4 [label=4]

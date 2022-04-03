@@ -9,9 +9,6 @@ from Unidadmilitar_listaes import UnidadMilitar_listaES
 from Robot import Robot
 from Robot_listaes import Robot_listaES
 
-from Mapa import Mapa
-from Mapa_matriz import Mapa_matriz
-
 
 class ArchivoXML():
   __listaArchivosXML = []
@@ -175,35 +172,3 @@ class ArchivoXML():
             else:
               self.__listaRobots.modificarCiudad(robot)
     return self.__listaRobots
-
-  
-listaCiudades.imprimir()
-listaCiudades.ubicar(3)
-listaFilas = listaCiudades.get_ciudad().get_listaFilas()
-listaFilas.imprimir()
-listaUnidadesMilitares = listaCiudades.get_ciudad().get_listaUnidadesMilitares()
-listaUnidadesMilitares.imprimir()
-
-
-noFilas = listaFilas.get_noFilas()
-ciudad = listaCiudades.get_ciudad()
-columnas = ciudad.get_noColumnas()
-filas = ciudad.get_noFilas()
-print(type(columnas))
-print(type(noFilas))
-matrizMapa = Mapa_Matriz(listaCiudades.get_ciudad().get_noColumnas(), listaCiudades.get_ciudad().get_noFilas())
-contador = 1
-for idFila in range(1, noFilas + 1, 1):
-  listaFilas.ubicar(idFila) # sitúo el apuntador en cada tupla
-  fila = listaFilas.get_fila() # obtengo el objeto de la tupla seleccionada
-  estado = fila.get_estado()
-  for idColumna in range(0, len(estado), 1):
-    print("recorrido: ", str(contador))
-    contador += 1
-    mapa = Mapa()
-    mapa.set_estado(estado[idColumna])
-    mapa.set_posicion(idColumna + 1, idFila)
-    matrizMapa.insertar(mapa)
-
-matrizMapa.imprimir()
-

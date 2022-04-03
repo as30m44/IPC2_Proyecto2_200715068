@@ -42,7 +42,16 @@ class Mapa_matriz():
       self.__finCabeceraVer.set_abajo(nodoNuevo)
       nodoNuevo.set_arriba(self.__finCabeceraVer)
       self.__finCabeceraVer = nodoNuevo
+
+  def get_noColumnas(self):
+    return self.__noColumnas
+
+  def get_noFilas(self):
+    return self.__noFilas
   
+  def get_mapa(self):
+    return self.__nodoActual.get_mapa()
+
   
   def ubicarNodoActual(self, posicion_X, posicion_Y):
     if (self.estaVacio()):
