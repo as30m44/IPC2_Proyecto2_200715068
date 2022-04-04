@@ -34,10 +34,10 @@ class Robot():
   
   def imprimirTitulo(self):
     id = "|" + "No".center(8, " ") + "|"
-    nombre = "NOMBRE".center(15, " ") + "|"
-    tipo = "TIPO".center(8, " ") + "|"
-    capacidad = "CAPACIDAD".center(8, " ") + "|"
-    borde = "-".ljust(36, "-")
+    nombre = "NOMBRE".center(28, " ") + "|"
+    tipo = "TIPO".center(14, " ") + "|"
+    capacidad = "CAPACIDAD".center(12, " ") + "|"
+    borde = "=".ljust(70, "=")
     print(borde)
     print(id, nombre, tipo, capacidad)
     print(borde)
@@ -45,10 +45,10 @@ class Robot():
   
   def imprimirCelda(self):
     id = "|" + str(self.__idRobot).center(8, " ") + "|"
-    nombre = self.__nombre.center(15, " ") + "|"
-    tipo = str(self.__tipo).center(8, " ") + "|"
-    capacidad = str(self.__capacidad).center(8, " ") + "|"
-    borde = "-".ljust(36, "-")
+    nombre = self.__nombre.center(28, " ") + "|"
+    tipo = str(self.__tipo).center(14, " ") + "|"
+    capacidad = str(self.__capacidad).center(12, " ") + "|"
+    borde = "-".ljust(70, "-")
     print(id, nombre, tipo, capacidad)
     print(borde)
     

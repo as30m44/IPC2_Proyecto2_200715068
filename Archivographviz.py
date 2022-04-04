@@ -1,7 +1,4 @@
 import imp
-from multiprocessing.spawn import import_main_path
-from turtle import fillcolor
-from unicodedata import name
 from graphviz import Graph
 from Mapa import Mapa
 from Mapa_nodo import Mapa_nodo
@@ -21,7 +18,7 @@ class ArchivoGraphviz():
       # configuraciones del archivo graphviz
       graficaMapa = Graph(name = "Mapa", directory = self.__directorio, filename = "Mapa")
       graficaMapa.attr(rankdir = "LR")
-      graficaMapa.attr("node", shape = "box", size = 1, style = "filled", fontsize = "8", fontcolor = "orange")
+      graficaMapa.attr("node", shape = "box", size = "1", style = "filled", fontsize = "12", fontcolor = "orange")
       graficaMapa.attr("edge", len = "0.1")
       # valores para recorrer la matriz
       noColumnas = matrizMapa.get_noColumnas()
@@ -44,10 +41,10 @@ class ArchivoGraphviz():
             graficaMapa.node(name = ("nodo" + str(i) + str(j)), label = estado, fillcolor = "cornflowerblue")
           elif (estado == "R" or estado == "r"): # unidad civil
             graficaMapa.node(name = ("nodo" + str(i) + str(j)), label = estado, fillcolor = "darkgray")
-          elif (estado == "militar"): # unidad militar
+          elif (estado == "M"): # unidad militar
             graficaMapa.node(name = ("nodo" + str(i) + str(j)), label = estado, fillcolor = "crimson")
           else: # cabeceras
-            graficaMapa.node(name = ("nodo" + str(i) + str(j)), label = estado, fillcolor = "white", shape = "circle")
+            graficaMapa.node(name = ("nodo" + str(i) + str(j)), label = estado, fillcolor = "white", shape = "circle", fontcolor = "black")
       # conexiones por filas
       # recorrido de filas
       for j in range(0, noFilas + 1, 1):
@@ -66,38 +63,5 @@ class ArchivoGraphviz():
           columna.append(tupla)
         with graficaMapa.subgraph(name = ("nivel" + str(i))) as nivel:
           nivel.attr(rank = "same")
-          nivel._edge(columna)
+          nivel.edges(columna)
       graficaMapa.view()
-
-matriz = Graph(name = "Matriz", directory = "grafica/", filename = "Matriz")
-matriz.attr(rankdir = "LR")
-matriz.attr("node", shape = "box", style = "filled", size = "8.5")
-matriz.attr("edge", len = "0.5")
-for i in range(1, 13, 1):
-  matriz.node(name = ("nodo" + str(i)), label = str(i), shape = "box", fillcolor = "orange")
-
-contador = 1
-for i in range(1, 5, 1): # filas
-  fila = []
-  for j in range(1,3,1): # columnas
-    tupla = (("nodo" + str(contador)), ("nodo" + str(contador + 1)))
-    fila.append(tupla)
-    contador += 1
-  matriz.edges(fila)
-  contador += 1
-
-for i in range(1, 4, 1): # columnas
-  columna_n = []
-  contador = i
-  for j in range(1, 4, 1): # filas
-    tupla = (("nodo" + str(contador)), ("nodo" + str(contador + 3)))
-    columna_n.append(tupla)
-    contador += 3
-  with matriz.subgraph(name = ("hijo" + str(i))) as columna:
-    columna.attr(rank = 'same')
-    columna.edges(columna_n)
-
-matriz.view()
-  
-print(type([('nodo1', 'nodo2'), ('nodo2', 'nodo3')]))
-print(type(('1', '2')))

@@ -10,6 +10,9 @@ class Ciudad_listaES():
   def __init__(self):
     pass
 
+  def get_noCiudades(self):
+    return self.__noCiudades
+  
   def get_idCiudadxNombre(self, nombre):
     idCiudad = 0
     if(self.estaVacio()):
@@ -26,8 +29,6 @@ class Ciudad_listaES():
           self.__nodoActual = self.__nodoActual.get_siguiente()
     return idCiudad
 
-  def get_noCiudades(self):
-    return self.__noCiudades
 
   def get_ciudad(self):
     return self.__nodoActual.get_ciudad()
@@ -37,6 +38,7 @@ class Ciudad_listaES():
     if (self.estaVacio() or self.__nodoActual == None):
       print("CIUDAD: la lista está vacía o no hay una ciudad seleccionada")
     else:
+      # el idCiudad se crea automaticamente en la lista de ciudades
       idCiudad_m = self.__nodoActual.get_ciudad().get_idCiudad()
       ciudad.set_idCiudad(idCiudad_m)
       self.__nodoActual.set_ciudad(ciudad)

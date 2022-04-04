@@ -10,6 +10,12 @@ class UnidadMilitar_listaES():
   def __init__(self):
     pass
   
+  def get_noUnidadesMilitares(self):
+    return self.__noUnidadesMilitares
+
+  def get_unidadMilitar(self):
+    return self.__nodoActual.get_unidadMilitar()
+
   
   def estaVacio(self):
     return self.__nodoInicio == None and self.__nodoFinal == None

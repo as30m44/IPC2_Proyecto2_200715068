@@ -52,7 +52,7 @@ class Mapa_matriz():
   def get_mapa(self):
     return self.__nodoActual.get_mapa()
 
-  
+
   def ubicarNodoActual(self, posicion_X, posicion_Y):
     if (self.estaVacio()):
       print("MATRIZ: no contiente datos del mapa")
@@ -60,9 +60,9 @@ class Mapa_matriz():
       # ubicar el nodo actual en la raiz
       self.__nodoActual = self.__raiz
       # recorre la cabecera horizontal y halla el índice buscado
-      self.__nodoActual = self.__unicarNodoAux(self.__nodoActual, posicion_X, "horizontal")
+      self.__nodoActual = self.__ubicarNodoAux(self.__nodoActual, posicion_X, "horizontal")
       # recorre las cabeceras verticales, desde el punto donde se quedó
-      self.__nodoActual = self.__unicarNodoAux(self.__nodoActual, posicion_Y, "vertical")
+      self.__nodoActual = self.__ubicarNodoAux(self.__nodoActual, posicion_Y, "vertical")
   
   
   def __ubicarNodoAux(self, nodo, posicion, direccion):
@@ -115,9 +115,9 @@ class Mapa_matriz():
     nodoNuevo.set_mapa(mapa)
     nodoPos_i = mapa.get_posicion_X()
     nodoPos_j = mapa.get_posicion_Y()
-    print(nodoPos_i, nodoPos_j)
+    # print(nodoPos_i, nodoPos_j)
     self.__nodoActual = self.__raiz
-    print(self.__nodoActual.get_derecha()==None)
+    # print(self.__nodoActual.get_derecha()==None)
     nodoVer = self.__ubicarNodoAux(self.__nodoActual, nodoPos_i, "horizontal")
     nodoHor = self.__ubicarNodoAux(self.__nodoActual, nodoPos_j, "vertical")
     nodoVerMax = None
@@ -173,7 +173,12 @@ class Mapa_matriz():
         nodoHorMax.set_izquierda(nodoNuevo)
         nodoNuevo.set_derecha(nodoHorMax)
 
-  
+
+  def modificarMapa(self, mapa):
+    if (self.estaVacio() or self.__nodoActual == None):
+      print("MAPA: la lista está vacía o no hay una celda seleccionada")
+    else:
+      self.__nodoActual.set_mapa(mapa)
   def imprimir(self):
     if (self.estaVacio()):
       print("MAPA: la matriz está vacía")

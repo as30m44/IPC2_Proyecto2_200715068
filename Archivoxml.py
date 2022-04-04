@@ -1,3 +1,4 @@
+from select import select
 import xml.etree.ElementTree as ET
 import os
 from Ciudad import Ciudad
@@ -8,12 +9,15 @@ from Unidadmilitar import UnidadMilitar
 from Unidadmilitar_listaes import UnidadMilitar_listaES
 from Robot import Robot
 from Robot_listaes import Robot_listaES
+from Mapa import Mapa
+from Mapa_matriz import Mapa_matriz
 
 
 class ArchivoXML():
   __listaArchivosXML = []
   __listaCiudades = Ciudad_listaES()
   __listaRobots = Robot_listaES()
+  __matrizMapa = None
 
   def __init__(self, nombreCarpeta):
     carpeta = nombreCarpeta + "/"
@@ -157,7 +161,7 @@ class ArchivoXML():
             nombre = nivel_3.text
             tipo = nivel_3.attrib.get("tipo")
             if (tipo == "ChapinFighter"):
-              capacidad = int(nivel_3.attrib.get("filas"))
+              capacidad = int(nivel_3.attrib.get("capacidad"))
             else: 
               capacidad = 0
             # agregar atributos a objeto Ciudad()
@@ -170,5 +174,58 @@ class ArchivoXML():
               self.__listaRobots.insertar(robot)
             # caso 1.2: cuando está la ciudad en la lista
             else:
-              self.__listaRobots.modificarCiudad(robot)
+              self.__listaRobots.modificarRobot(robot)
     return self.__listaRobots
+
+
+  def get_matrizMapa(self, idCiudad):
+    # ----------------------------------------------------------------------------------------------
+    # creación del mapa
+    self.__listaCiudades.ubicar(idCiudad)
+    listaFilas = self.__listaCiudades.get_ciudad().get_listaFilas()
+    listaFilas.imprimir()
+    ciudad = self.__listaCiudades.get_ciudad()
+    noColumnas = ciudad.get_noColumnas()
+    noFilas = ciudad.get_noFilas()
+    self.__matrizMapa = Mapa_matriz(noColumnas, noFilas)
+    # recorre cada fila de la "lista de filas"
+    for idFila in range(1, noFilas + 1, 1):
+      listaFilas.ubicar(idFila) # sitúo el apuntador en cada tupla
+      fila = listaFilas.get_fila() # obtengo el objeto de la tupla seleccionada
+      estado = fila.get_estado()
+      # recorre la cadena de cada fila {****E****C****R****}
+      for idColumna in range(0, len(estado), 1):
+        mapa = Mapa()
+        mapa.set_estado(estado[idColumna])
+        mapa.set_posicion(idColumna + 1, idFila)
+        self.__matrizMapa.insertar(mapa)
+    # ----------------------------------------------------------------------------------------------
+    # inserción de la unidades militares
+    listaUnidadesMilitares = self.__listaCiudades.get_ciudad().get_listaUnidadesMilitares()
+    if (listaUnidadesMilitares.estaVacio() == False):
+      listaUnidadesMilitares.imprimir()
+      noFilas = listaUnidadesMilitares.get_noUnidadesMilitares()
+      # recorre cada fila de las "unidades militares"
+      for idFila in range(1, noFilas + 1, 1):
+        # ubicar la unidad militar y obtener sus atributos
+        listaUnidadesMilitares.ubicar(idFila)
+        unidadMilitar = listaUnidadesMilitares.get_unidadMilitar()
+        posicion_X = unidadMilitar.get_posicion_X()
+        posicion_Y = unidadMilitar.get_posicion_Y()
+        # reasignar atributos del mapa
+        mapa = Mapa()
+        mapa.set_estado("M")
+        mapa.set_posicion(posicion_X, posicion_Y)
+        self.__matrizMapa.ubicarNodoActual(posicion_X, posicion_Y)
+        self.__matrizMapa.modificarMapa(mapa)
+      self.__matrizMapa.imprimir()
+    return self.__matrizMapa
+
+
+  def imprimirListaXML(self):
+    contador = 1
+    for archivo in self.__listaArchivosXML:
+      print(str(contador) + "." + archivo)
+      contador += 1
+
+      

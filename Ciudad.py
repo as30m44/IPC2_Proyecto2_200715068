@@ -48,10 +48,10 @@ class Ciudad():
   
   def imprimirTitulo(self):
     id = "|" + "No".center(8, " ") + "|"
-    nombre = "NOMBRE".center(15, " ") + "|"
+    nombre = "NOMBRE".center(28, " ") + "|"
     columnas = "COLUMNAS".center(8, " ") + "|"
     filas = "FILAS".center(8, " ") + "|"
-    borde = "-".ljust(36, "-")
+    borde = "=".ljust(60, "=")
     print(borde)
     print(id, nombre, columnas, filas)
     print(borde)
@@ -59,10 +59,10 @@ class Ciudad():
   
   def imprimirCelda(self):
     id = "|" + str(self.__idCiudad).center(8, " ") + "|"
-    nombre = self.__nombre.center(15, " ") + "|"
+    nombre = self.__nombre.center(28, " ") + "|"
     columnas = str(self.__noColumnas).center(8, " ") + "|"
     filas = str(self.__noFilas).center(8, " ") + "|"
-    borde = "-".ljust(36, "-")
+    borde = "-".ljust(60, "-")
     print(id, nombre, columnas, filas)
     print(borde)
     

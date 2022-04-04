@@ -18,7 +18,7 @@ class Robot_listaES():
       encontrado = False
       self.__nodoActual = self.__nodoInicio
       while (encontrado == False and self.__nodoActual != None):
-        robot = self.__nodoActual.get_ciudad()
+        robot = self.__nodoActual.get_robot()
         if (robot.get_nombre() == nombre):
           encontrado = True
           idRobot = robot.get_idRobot()

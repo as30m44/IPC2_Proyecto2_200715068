@@ -7,11 +7,11 @@ class Fila_listaES():
   __nodoActual = None # Fila_nodoES()
   __noFilas = 0
 
-  def get_noFilas(self):
-    return self.__noFilas
-
   def get_fila(self):
     return self.__nodoActual.get_fila()
+
+  def get_noFilas(self):
+    return self.__noFilas
 
   
   def estaVacio(self):

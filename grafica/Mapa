@@ -1,0 +1,379 @@
+graph Mapa {
+	rankdir=LR
+	node [fontcolor=orange fontsize=8 shape=box size=1 style=filled]
+	edge [len=0.1]
+	nodo00 [label=raiz fillcolor=white shape=circle]
+	nodo10 [label=1 fillcolor=white shape=circle]
+	nodo20 [label=2 fillcolor=white shape=circle]
+	nodo30 [label=3 fillcolor=white shape=circle]
+	nodo40 [label=4 fillcolor=white shape=circle]
+	nodo50 [label=5 fillcolor=white shape=circle]
+	nodo60 [label=6 fillcolor=white shape=circle]
+	nodo70 [label=7 fillcolor=white shape=circle]
+	nodo80 [label=8 fillcolor=white shape=circle]
+	nodo90 [label=9 fillcolor=white shape=circle]
+	nodo100 [label=10 fillcolor=white shape=circle]
+	nodo01 [label=1 fillcolor=white shape=circle]
+	nodo11 [label="*" fillcolor=black]
+	nodo21 [label="*" fillcolor=black]
+	nodo31 [label="*" fillcolor=black]
+	nodo41 [label="*" fillcolor=black]
+	nodo51 [label="*" fillcolor=black]
+	nodo61 [label="*" fillcolor=black]
+	nodo71 [label="*" fillcolor=black]
+	nodo81 [label="*" fillcolor=black]
+	nodo91 [label="*" fillcolor=black]
+	nodo101 [label="*" fillcolor=black]
+	nodo02 [label=2 fillcolor=white shape=circle]
+	nodo12 [label="*" fillcolor=black]
+	nodo22 [label="*" fillcolor=black]
+	nodo32 [label="*" fillcolor=black]
+	nodo42 [label=" " fillcolor=white]
+	nodo52 [label=M fillcolor=crimson]
+	nodo62 [label=" " fillcolor=white]
+	nodo72 [label=C fillcolor=cornflowerblue]
+	nodo82 [label=" " fillcolor=white]
+	nodo92 [label=" " fillcolor=white]
+	nodo102 [label=R fillcolor=darkgray]
+	nodo03 [label=3 fillcolor=white shape=circle]
+	nodo13 [label="*" fillcolor=black]
+	nodo23 [label="*" fillcolor=black]
+	nodo33 [label="*" fillcolor=black]
+	nodo43 [label=" " fillcolor=white]
+	nodo53 [label="*" fillcolor=black]
+	nodo63 [label="*" fillcolor=black]
+	nodo73 [label="*" fillcolor=black]
+	nodo83 [label="*" fillcolor=black]
+	nodo93 [label="*" fillcolor=black]
+	nodo103 [label="*" fillcolor=black]
+	nodo04 [label=4 fillcolor=white shape=circle]
+	nodo14 [label="*" fillcolor=black]
+	nodo24 [label="*" fillcolor=black]
+	nodo34 [label="*" fillcolor=black]
+	nodo44 [label=" " fillcolor=white]
+	nodo54 [label="*" fillcolor=black]
+	nodo64 [label="*" fillcolor=black]
+	nodo74 [label="*" fillcolor=black]
+	nodo84 [label="*" fillcolor=black]
+	nodo94 [label="*" fillcolor=black]
+	nodo104 [label="*" fillcolor=black]
+	nodo05 [label=5 fillcolor=white shape=circle]
+	nodo15 [label="*" fillcolor=black]
+	nodo25 [label="*" fillcolor=black]
+	nodo35 [label="*" fillcolor=black]
+	nodo45 [label=" " fillcolor=white]
+	nodo55 [label=M fillcolor=crimson]
+	nodo65 [label=" " fillcolor=white]
+	nodo75 [label=" " fillcolor=white]
+	nodo85 [label=" " fillcolor=white]
+	nodo95 [label=C fillcolor=cornflowerblue]
+	nodo105 [label="*" fillcolor=black]
+	nodo06 [label=6 fillcolor=white shape=circle]
+	nodo16 [label=E fillcolor=aquamarine31]
+	nodo26 [label=" " fillcolor=white]
+	nodo36 [label=" " fillcolor=white]
+	nodo46 [label=" " fillcolor=white]
+	nodo56 [label="*" fillcolor=black]
+	nodo66 [label="*" fillcolor=black]
+	nodo76 [label="*" fillcolor=black]
+	nodo86 [label="*" fillcolor=black]
+	nodo96 [label="*" fillcolor=black]
+	nodo106 [label="*" fillcolor=black]
+	nodo07 [label=7 fillcolor=white shape=circle]
+	nodo17 [label="*" fillcolor=black]
+	nodo27 [label="*" fillcolor=black]
+	nodo37 [label="*" fillcolor=black]
+	nodo47 [label=" " fillcolor=white]
+	nodo57 [label="*" fillcolor=black]
+	nodo67 [label="*" fillcolor=black]
+	nodo77 [label="*" fillcolor=black]
+	nodo87 [label="*" fillcolor=black]
+	nodo97 [label="*" fillcolor=black]
+	nodo107 [label="*" fillcolor=black]
+	nodo08 [label=8 fillcolor=white shape=circle]
+	nodo18 [label="*" fillcolor=black]
+	nodo28 [label="*" fillcolor=black]
+	nodo38 [label="*" fillcolor=black]
+	nodo48 [label=" " fillcolor=white]
+	nodo58 [label="*" fillcolor=black]
+	nodo68 [label="*" fillcolor=black]
+	nodo78 [label="*" fillcolor=black]
+	nodo88 [label="*" fillcolor=black]
+	nodo98 [label="*" fillcolor=black]
+	nodo108 [label=C fillcolor=cornflowerblue]
+	nodo09 [label=9 fillcolor=white shape=circle]
+	nodo19 [label="*" fillcolor=black]
+	nodo29 [label="*" fillcolor=black]
+	nodo39 [label="*" fillcolor=black]
+	nodo49 [label=" " fillcolor=white]
+	nodo59 [label="*" fillcolor=black]
+	nodo69 [label="*" fillcolor=black]
+	nodo79 [label="*" fillcolor=black]
+	nodo89 [label="*" fillcolor=black]
+	nodo99 [label="*" fillcolor=black]
+	nodo109 [label="*" fillcolor=black]
+	nodo010 [label=10 fillcolor=white shape=circle]
+	nodo110 [label="*" fillcolor=black]
+	nodo210 [label="*" fillcolor=black]
+	nodo310 [label="*" fillcolor=black]
+	nodo410 [label=" " fillcolor=white]
+	nodo510 [label=" " fillcolor=white]
+	nodo610 [label=" " fillcolor=white]
+	nodo710 [label=" " fillcolor=white]
+	nodo810 [label=" " fillcolor=white]
+	nodo910 [label=" " fillcolor=white]
+	nodo1010 [label=R fillcolor=darkgray]
+	nodo00 -- nodo10
+	nodo10 -- nodo20
+	nodo20 -- nodo30
+	nodo30 -- nodo40
+	nodo40 -- nodo50
+	nodo50 -- nodo60
+	nodo60 -- nodo70
+	nodo70 -- nodo80
+	nodo80 -- nodo90
+	nodo90 -- nodo100
+	nodo01 -- nodo11
+	nodo11 -- nodo21
+	nodo21 -- nodo31
+	nodo31 -- nodo41
+	nodo41 -- nodo51
+	nodo51 -- nodo61
+	nodo61 -- nodo71
+	nodo71 -- nodo81
+	nodo81 -- nodo91
+	nodo91 -- nodo101
+	nodo02 -- nodo12
+	nodo12 -- nodo22
+	nodo22 -- nodo32
+	nodo32 -- nodo42
+	nodo42 -- nodo52
+	nodo52 -- nodo62
+	nodo62 -- nodo72
+	nodo72 -- nodo82
+	nodo82 -- nodo92
+	nodo92 -- nodo102
+	nodo03 -- nodo13
+	nodo13 -- nodo23
+	nodo23 -- nodo33
+	nodo33 -- nodo43
+	nodo43 -- nodo53
+	nodo53 -- nodo63
+	nodo63 -- nodo73
+	nodo73 -- nodo83
+	nodo83 -- nodo93
+	nodo93 -- nodo103
+	nodo04 -- nodo14
+	nodo14 -- nodo24
+	nodo24 -- nodo34
+	nodo34 -- nodo44
+	nodo44 -- nodo54
+	nodo54 -- nodo64
+	nodo64 -- nodo74
+	nodo74 -- nodo84
+	nodo84 -- nodo94
+	nodo94 -- nodo104
+	nodo05 -- nodo15
+	nodo15 -- nodo25
+	nodo25 -- nodo35
+	nodo35 -- nodo45
+	nodo45 -- nodo55
+	nodo55 -- nodo65
+	nodo65 -- nodo75
+	nodo75 -- nodo85
+	nodo85 -- nodo95
+	nodo95 -- nodo105
+	nodo06 -- nodo16
+	nodo16 -- nodo26
+	nodo26 -- nodo36
+	nodo36 -- nodo46
+	nodo46 -- nodo56
+	nodo56 -- nodo66
+	nodo66 -- nodo76
+	nodo76 -- nodo86
+	nodo86 -- nodo96
+	nodo96 -- nodo106
+	nodo07 -- nodo17
+	nodo17 -- nodo27
+	nodo27 -- nodo37
+	nodo37 -- nodo47
+	nodo47 -- nodo57
+	nodo57 -- nodo67
+	nodo67 -- nodo77
+	nodo77 -- nodo87
+	nodo87 -- nodo97
+	nodo97 -- nodo107
+	nodo08 -- nodo18
+	nodo18 -- nodo28
+	nodo28 -- nodo38
+	nodo38 -- nodo48
+	nodo48 -- nodo58
+	nodo58 -- nodo68
+	nodo68 -- nodo78
+	nodo78 -- nodo88
+	nodo88 -- nodo98
+	nodo98 -- nodo108
+	nodo09 -- nodo19
+	nodo19 -- nodo29
+	nodo29 -- nodo39
+	nodo39 -- nodo49
+	nodo49 -- nodo59
+	nodo59 -- nodo69
+	nodo69 -- nodo79
+	nodo79 -- nodo89
+	nodo89 -- nodo99
+	nodo99 -- nodo109
+	nodo010 -- nodo110
+	nodo110 -- nodo210
+	nodo210 -- nodo310
+	nodo310 -- nodo410
+	nodo410 -- nodo510
+	nodo510 -- nodo610
+	nodo610 -- nodo710
+	nodo710 -- nodo810
+	nodo810 -- nodo910
+	nodo910 -- nodo1010
+	subgraph nivel0 {
+		rank=same
+		nodo00 -- nodo01
+		nodo01 -- nodo02
+		nodo02 -- nodo03
+		nodo03 -- nodo04
+		nodo04 -- nodo05
+		nodo05 -- nodo06
+		nodo06 -- nodo07
+		nodo07 -- nodo08
+		nodo08 -- nodo09
+		nodo09 -- nodo010
+	}
+	subgraph nivel1 {
+		rank=same
+		nodo10 -- nodo11
+		nodo11 -- nodo12
+		nodo12 -- nodo13
+		nodo13 -- nodo14
+		nodo14 -- nodo15
+		nodo15 -- nodo16
+		nodo16 -- nodo17
+		nodo17 -- nodo18
+		nodo18 -- nodo19
+		nodo19 -- nodo110
+	}
+	subgraph nivel2 {
+		rank=same
+		nodo20 -- nodo21
+		nodo21 -- nodo22
+		nodo22 -- nodo23
+		nodo23 -- nodo24
+		nodo24 -- nodo25
+		nodo25 -- nodo26
+		nodo26 -- nodo27
+		nodo27 -- nodo28
+		nodo28 -- nodo29
+		nodo29 -- nodo210
+	}
+	subgraph nivel3 {
+		rank=same
+		nodo30 -- nodo31
+		nodo31 -- nodo32
+		nodo32 -- nodo33
+		nodo33 -- nodo34
+		nodo34 -- nodo35
+		nodo35 -- nodo36
+		nodo36 -- nodo37
+		nodo37 -- nodo38
+		nodo38 -- nodo39
+		nodo39 -- nodo310
+	}
+	subgraph nivel4 {
+		rank=same
+		nodo40 -- nodo41
+		nodo41 -- nodo42
+		nodo42 -- nodo43
+		nodo43 -- nodo44
+		nodo44 -- nodo45
+		nodo45 -- nodo46
+		nodo46 -- nodo47
+		nodo47 -- nodo48
+		nodo48 -- nodo49
+		nodo49 -- nodo410
+	}
+	subgraph nivel5 {
+		rank=same
+		nodo50 -- nodo51
+		nodo51 -- nodo52
+		nodo52 -- nodo53
+		nodo53 -- nodo54
+		nodo54 -- nodo55
+		nodo55 -- nodo56
+		nodo56 -- nodo57
+		nodo57 -- nodo58
+		nodo58 -- nodo59
+		nodo59 -- nodo510
+	}
+	subgraph nivel6 {
+		rank=same
+		nodo60 -- nodo61
+		nodo61 -- nodo62
+		nodo62 -- nodo63
+		nodo63 -- nodo64
+		nodo64 -- nodo65
+		nodo65 -- nodo66
+		nodo66 -- nodo67
+		nodo67 -- nodo68
+		nodo68 -- nodo69
+		nodo69 -- nodo610
+	}
+	subgraph nivel7 {
+		rank=same
+		nodo70 -- nodo71
+		nodo71 -- nodo72
+		nodo72 -- nodo73
+		nodo73 -- nodo74
+		nodo74 -- nodo75
+		nodo75 -- nodo76
+		nodo76 -- nodo77
+		nodo77 -- nodo78
+		nodo78 -- nodo79
+		nodo79 -- nodo710
+	}
+	subgraph nivel8 {
+		rank=same
+		nodo80 -- nodo81
+		nodo81 -- nodo82
+		nodo82 -- nodo83
+		nodo83 -- nodo84
+		nodo84 -- nodo85
+		nodo85 -- nodo86
+		nodo86 -- nodo87
+		nodo87 -- nodo88
+		nodo88 -- nodo89
+		nodo89 -- nodo810
+	}
+	subgraph nivel9 {
+		rank=same
+		nodo90 -- nodo91
+		nodo91 -- nodo92
+		nodo92 -- nodo93
+		nodo93 -- nodo94
+		nodo94 -- nodo95
+		nodo95 -- nodo96
+		nodo96 -- nodo97
+		nodo97 -- nodo98
+		nodo98 -- nodo99
+		nodo99 -- nodo910
+	}
+	subgraph nivel10 {
+		rank=same
+		nodo100 -- nodo101
+		nodo101 -- nodo102
+		nodo102 -- nodo103
+		nodo103 -- nodo104
+		nodo104 -- nodo105
+		nodo105 -- nodo106
+		nodo106 -- nodo107
+		nodo107 -- nodo108
+		nodo108 -- nodo109
+		nodo109 -- nodo1010
+	}
+}
