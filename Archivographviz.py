@@ -18,7 +18,8 @@ class ArchivoGraphviz():
       # configuraciones del archivo graphviz
       graficaMapa = Graph(name = "Mapa", directory = self.__directorio, filename = "Mapa")
       graficaMapa.attr(rankdir = "LR")
-      graficaMapa.attr("node", shape = "box", size = "1", style = "filled", fontsize = "12", fontcolor = "orange")
+      graficaMapa.attr(ranksep = "0.5")
+      graficaMapa.attr("node", shape = "box", size = "0.5", style = "filled", fontsize = "12", fontcolor = "orange", nodesep = "0.5")
       graficaMapa.attr("edge", len = "0.1")
       # valores para recorrer la matriz
       noColumnas = matrizMapa.get_noColumnas()
@@ -36,10 +37,10 @@ class ArchivoGraphviz():
           elif (estado == " "): # celda transitable
             graficaMapa.node(name = ("nodo" + str(i) + str(j)), label = estado, fillcolor = "white")
           elif (estado == "E" or estado == "e"): # punto de entrada
-            graficaMapa.node(name = ("nodo" + str(i) + str(j)), label = estado, fillcolor = "aquamarine31")
+            graficaMapa.node(name = ("nodo" + str(i) + str(j)), label = estado, fillcolor = "darkseagreen3")
           elif (estado == "C" or estado == "c"): # unidad civil
             graficaMapa.node(name = ("nodo" + str(i) + str(j)), label = estado, fillcolor = "cornflowerblue")
-          elif (estado == "R" or estado == "r"): # unidad civil
+          elif (estado == "R" or estado == "r"): # recurso militar
             graficaMapa.node(name = ("nodo" + str(i) + str(j)), label = estado, fillcolor = "darkgray")
           elif (estado == "M"): # unidad militar
             graficaMapa.node(name = ("nodo" + str(i) + str(j)), label = estado, fillcolor = "crimson")

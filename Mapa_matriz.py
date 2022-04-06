@@ -1,5 +1,7 @@
 from Mapa_nodo import Mapa_nodo
 from Mapa import Mapa
+from Celda import Celda
+from Celda_listaes import Celda_listaES
 
 
 class Mapa_matriz():
@@ -9,6 +11,9 @@ class Mapa_matriz():
   __nodoActual = None # Mapa_nodo()
   __noColumnas = 0
   __noFilas = 0
+  __listaPuntosEntrada = Celda_listaES()
+  __listaUnidadesCiviles = Celda_listaES()
+  __listaRecursosMilitares = Celda_listaES()
   # __noPasos = 0
   
   def __init__(self, noColumnas, noFilas):
@@ -52,6 +57,14 @@ class Mapa_matriz():
   def get_mapa(self):
     return self.__nodoActual.get_mapa()
 
+  def get_listaPuntosEntrada(self):
+    return self.__listaPuntosEntrada
+
+  def get_listaUnidadesCiviles(self):
+    return self.__listaUnidadesCiviles
+
+  def get_listaRecursosMilitares(self):
+    return self.__listaRecursosMilitares
 
   def ubicarNodoActual(self, posicion_X, posicion_Y):
     if (self.estaVacio()):
@@ -103,6 +116,22 @@ class Mapa_matriz():
 
 
   def insertar(self, mapa):
+    # ----------------------------------------------------------------------------------------------
+    # insertar información en la listas
+    celdaNueva = Celda()
+    estado = mapa.get_estado()
+    posicion_X = mapa.get_posicion_X()
+    posicion_Y = mapa.get_posicion_Y()
+    celdaNueva.set_posicion(posicion_X, posicion_Y)
+    # clasificación  según el tipo de celda
+    if (estado == "E" or estado == "e"): # puntos de entrada
+      self.__listaPuntosEntrada.insertar(celdaNueva)
+    elif(estado == "C" or estado == "c"): # unidad civil
+      self.__listaUnidadesCiviles.insertar(celdaNueva)
+    elif (estado == "R" or estado == "r"): # recurso militar
+      self.__listaRecursosMilitares.insertar(celdaNueva)
+    # ----------------------------------------------------------------------------------------------
+    # insertar información a la matriz
     if (self.estaVacio()):
       self.__raiz = self.__nodoActual
       self.__insertarAux(mapa)
@@ -179,6 +208,8 @@ class Mapa_matriz():
       print("MAPA: la lista está vacía o no hay una celda seleccionada")
     else:
       self.__nodoActual.set_mapa(mapa)
+
+  
   def imprimir(self):
     if (self.estaVacio()):
       print("MAPA: la matriz está vacía")

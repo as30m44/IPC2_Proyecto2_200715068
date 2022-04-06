@@ -1,4 +1,3 @@
-from select import select
 import xml.etree.ElementTree as ET
 import os
 from Ciudad import Ciudad
@@ -16,8 +15,11 @@ from Mapa_matriz import Mapa_matriz
 class ArchivoXML():
   __listaArchivosXML = []
   __listaCiudades = Ciudad_listaES()
-  __listaRobots = Robot_listaES()
+  __listaRobotsRescate = Robot_listaES()
+  __listaRobotsExtraccion = Robot_listaES()
   __matrizMapa = None
+  __hayUnidadCivil = False
+  __hayRecursoMilitar = False
 
   def __init__(self, nombreCarpeta):
     carpeta = nombreCarpeta + "/"
@@ -27,7 +29,6 @@ class ArchivoXML():
       if (os.path.isfile(os.path.join(carpeta, archivoXML)) and archivoXML.endswith(".xml")):
         self.__listaArchivosXML.append(carpeta + archivoXML)
   
-
   def get_listaCiudades(self):
     # **********************************************************************************************
     # Atributos del objeto Ciudad()
@@ -131,59 +132,21 @@ class ArchivoXML():
               # caso A.4.2: cuando está la ciudad en la lista
               else:
                 self.__listaCiudades.modificarCiudad(ciudad)
+    self.__crearListaRobot()
     return self.__listaCiudades  
 
+  def get_listaRobotsRescate(self):
+    return self.__listaRobotsRescate
 
-  def get_listaRobot(self):
-    # **********************************************************************************************
-    # Atributos del objeto Robot()
-    idRobot = 0
-    nombre = ""
-    tipo = ""
-    capacidad = 0
-    # **********************************************************************************************
-    # lee el contenido de cada archivo XML
-    for archivoXML in self.__listaArchivosXML:
-      arbol = ET.parse(archivoXML)
-      raiz = arbol.getroot() # raiz[] es <robots>
-      # recorre el contenido dentro de las etiquetas <robots>
-      for nivel_2 in raiz[1]: # nivel_2 es <robot>
-        robot = Robot()
-        # ----------------------------------------------------------------------------------------------
-        # recorre el contenido dentro de las etiquetas <robot>
-        for nivel_3 in nivel_2: # nivel_3 es <nombre>
-          # ............................................................................................
-          # caso 1: datos para el objeto Robot()
-          if (nivel_3.tag == "nombre"):
-            # busca si el robot está en la lista y devuelve su posición
-            idRobot = self.__listaRobots.get_idRobotxNombre(nivel_3.text) # 0: para nuevo o no existe ciudad
-            # obtención de atributos de xml
-            nombre = nivel_3.text
-            tipo = nivel_3.attrib.get("tipo")
-            if (tipo == "ChapinFighter"):
-              capacidad = int(nivel_3.attrib.get("capacidad"))
-            else: 
-              capacidad = 0
-            # agregar atributos a objeto Ciudad()
-            robot.set_nombre(nombre)
-            robot.set_tipo(tipo)
-            robot.set_capacidad(capacidad)
-            # insertar el robot en la lista
-            # caso 1.1: cuando la ciudad no está en la lista o la lista esta vacía
-            if (idRobot == 0):
-              self.__listaRobots.insertar(robot)
-            # caso 1.2: cuando está la ciudad en la lista
-            else:
-              self.__listaRobots.modificarRobot(robot)
-    return self.__listaRobots
-
+  def get_listaRobotsExtraccion(self):
+    return self.__listaRobotsExtraccion
 
   def get_matrizMapa(self, idCiudad):
     # ----------------------------------------------------------------------------------------------
     # creación del mapa
     self.__listaCiudades.ubicar(idCiudad)
     listaFilas = self.__listaCiudades.get_ciudad().get_listaFilas()
-    listaFilas.imprimir()
+    # listaFilas.imprimir()
     ciudad = self.__listaCiudades.get_ciudad()
     noColumnas = ciudad.get_noColumnas()
     noFilas = ciudad.get_noFilas()
@@ -199,11 +162,16 @@ class ArchivoXML():
         mapa.set_estado(estado[idColumna])
         mapa.set_posicion(idColumna + 1, idFila)
         self.__matrizMapa.insertar(mapa)
+        # verificar la realización de misiones
+        if (estado[idColumna] == "C" or estado[idColumna] == "c"): 
+          self.__hayUnidadCivil = True
+        elif (estado[idColumna] == "R" or estado[idColumna] == "r"):
+          self.__hayRecursoMilitar = True
     # ----------------------------------------------------------------------------------------------
     # inserción de la unidades militares
     listaUnidadesMilitares = self.__listaCiudades.get_ciudad().get_listaUnidadesMilitares()
     if (listaUnidadesMilitares.estaVacio() == False):
-      listaUnidadesMilitares.imprimir()
+      # listaUnidadesMilitares.imprimir()
       noFilas = listaUnidadesMilitares.get_noUnidadesMilitares()
       # recorre cada fila de las "unidades militares"
       for idFila in range(1, noFilas + 1, 1):
@@ -218,8 +186,70 @@ class ArchivoXML():
         mapa.set_posicion(posicion_X, posicion_Y)
         self.__matrizMapa.ubicarNodoActual(posicion_X, posicion_Y)
         self.__matrizMapa.modificarMapa(mapa)
-      self.__matrizMapa.imprimir()
+      # self.__matrizMapa.imprimir()
     return self.__matrizMapa
+
+  def get_hayUnidadCivil(self):
+    return self.__hayUnidadCivil
+
+  def get_hayRecursoMilitar(self):
+    return self.__hayRecursoMilitar
+
+  def __crearListaRobot(self):
+    # **********************************************************************************************
+    # Atributos del objeto Robot()
+    idRobot = 0
+    nombre = ""
+    tipo = ""
+    capacidad = 0
+    # **********************************************************************************************
+    # lee el contenido de cada archivo XML
+    for archivoXML in self.__listaArchivosXML:
+      arbol = ET.parse(archivoXML)
+      raiz = arbol.getroot() # raiz[] es <robots>
+      # recorre el contenido dentro de las etiquetas <robots>
+      for nivel_2 in raiz[1]: # nivel_2 es <robot>
+        robot = Robot()
+        # ------------------------------------------------------------------------------------------
+        # recorre el contenido dentro de las etiquetas <robot>
+        for nivel_3 in nivel_2: # nivel_3 es <nombre>
+          # ........................................................................................
+          # caso 1: datos para el objeto Robot()
+          if (nivel_3.tag == "nombre"):
+            # obtención de atributos de xml
+            nombre = nivel_3.text
+            tipo = nivel_3.attrib.get("tipo")
+            if (tipo == "ChapinFighter"):
+              capacidad = int(nivel_3.attrib.get("capacidad"))
+            else: 
+              capacidad = 0
+            # agregar atributos a objeto Ciudad()
+            robot.set_nombre(nombre)
+            robot.set_tipo(tipo)
+            robot.set_capacidad(capacidad)
+            # insertar el robot en la lista según su tipo
+            # ......................................................................................
+            # caso 1.1: robot tipo ChapinFighter
+            if (tipo == "ChapinFighter"):
+              # busca si el robot está en la lista y devuelve su posición
+              idRobot = self.__listaRobotsExtraccion.get_idRobotxNombre(nivel_3.text) # 0: para nuevo o no existe ciudad
+              # caso 1.1.1: cuando la ciudad no está en la lista o la lista esta vacía
+              if (idRobot == 0):
+                self.__listaRobotsExtraccion.insertar(robot)
+              # caso 1.1.2: cuando está la ciudad en la lista
+              else:
+                self.__listaRobotsExtraccion.modificarRobot(robot)
+            # ......................................................................................
+            # caso 1.2: robot tipo ChapinRescue
+            else:
+              # busca si el robot está en la lista y devuelve su posición
+              idRobot = self.__listaRobotsRescate.get_idRobotxNombre(nivel_3.text) # 0: para nuevo o no existe ciudad
+              # caso 1.2.1: cuando la ciudad no está en la lista o la lista esta vacía
+              if (idRobot == 0):
+                self.__listaRobotsRescate.insertar(robot)
+              # caso 1.2.2: cuando está la ciudad en la lista
+              else:
+                self.__listaRobotsRescate.modificarRobot(robot)
 
 
   def imprimirListaXML(self):
@@ -227,5 +257,3 @@ class ArchivoXML():
     for archivo in self.__listaArchivosXML:
       print(str(contador) + "." + archivo)
       contador += 1
-
-      
